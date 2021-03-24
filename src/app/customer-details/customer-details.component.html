@@ -1,0 +1,32 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isloadingResults">
+      <mat-spinner *ngIf="isloadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/customers']"><mat-icon>list</mat-icon></a>
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title><h2>Details</h2></mat-card-title>        
+      </mat-card-header>
+      <mat-card-content>
+        <dl>
+
+          <dt>Name:</dt>
+          <dd>{{customer.name}}</dd>
+
+          <dt>Country:</dt>
+          <dd>{{customer.phoneDetails.countryName}}</dd>
+
+          <dt>Phone:</dt>
+          <dd>{{customer.phone}}</dd>
+
+          <dt>Valid Number:</dt>
+          <dd>{{customer.validPhoneNumber}}</dd>
+        </dl>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>

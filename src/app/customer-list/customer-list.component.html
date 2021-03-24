@@ -1,0 +1,58 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isloadingResults">
+      <mat-spinner *ngIf="isloadingResults"></mat-spinner>
+    </div>
+    <div>
+      <mat-card class="example-card">     
+        <div [formGroup]="myGroup">
+          <div>
+            Filter by :
+            <mat-button-toggle-group [(ngModel)]="filterBy" name="filterBy" aria-label="Filter by" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle value="name" checked>Country</mat-button-toggle>
+              <mat-button-toggle value="phone">Phone Number</mat-button-toggle>
+              <mat-button-toggle value="isValid">Phone Status</mat-button-toggle>              
+            </mat-button-toggle-group>
+          </div>
+          <mat-form-field class="example-full-width">
+            <input (keyup)="applyFilter($event.target.value)" matInput formControlName="filter" placeholder="Filter">
+          </mat-form-field>     
+        </div>  
+      </mat-card>      
+    </div>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="data" class="example-table"
+             matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+             
+        <!-- country Name Column -->
+        <ng-container matColumnDef="country">
+          <th mat-header-cell mat-sort-header (click)="sortByName()" *matHeaderCellDef>Country</th>
+          <td mat-cell *matCellDef="let row">{{row.phoneDetails.countryName}}</td>
+        </ng-container>
+
+        <!-- phone code Column -->
+        <ng-container matColumnDef="code">
+          <th mat-header-cell mat-sort-header (click)="sortByCode()" *matHeaderCellDef>Country Code</th>
+          <td mat-cell *matCellDef="let row"> {{row.phoneDetails.countryCode}}</td>
+        </ng-container>          
+  
+        <!-- Customer Email Column -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell mat-sort-header (click)="sortByPhone()" *matHeaderCellDef>Phone number</th>
+          <td mat-cell *matCellDef="let row"> {{row.phone}}</td>
+        </ng-container>
+
+        <!-- phone status Column -->
+        <ng-container matColumnDef="isValid">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let row"> {{row.validPhoneNumber}}</td>
+        </ng-container>        
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/customer-details/', row.id]"></tr>
+      </table>
+      <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50]"
+         showFirstLastButtons (page)="onChangePagination($event)"></mat-paginator>
+    </div>
+  </div>
