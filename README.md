@@ -5,13 +5,13 @@ This is the front-end part of Demo project was generated with [Angular CLI](http
 ## Back-end :
 In order to run this project successfully , you should run back-end application first ,
 then connect this application to the back-end ,
-`https://github.com/aboelsoud3/Spring-Demo`
+`https://github.com/aboelsoud3/Jumia-Spring`
 
 
 ## Development server
 in an empty folder or directory , open terminal or CMD and enter the following commands in sequance :
-1. `git clone --progress -v "https://github.com/aboelsoud3/Angular-Demo.git"`
-2. `cd Angular-Demo`
+1. `git clone --progress -v "https://github.com/aboelsoud3/Jumia-Angular.git"`
+2. `cd Jumia-Angular`
 3. `npm install`
 3. Run `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
